@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://dc2ixaiwf4q57"]
+
+[ext_resource type="PackedScene" uid="uid://rlfcqk4e4i5m" path="res://Assets/Prefabs/HallwayLowPolyUV_Textured.tscn" id="1_q7sdw"]
+[ext_resource type="PackedScene" uid="uid://bvay5j3aig3on" path="res://Assets/Prefabs/CeilingLightSmall.tscn" id="2_lrmd0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b15bl"]
+sky_top_color = Color(0.143568, 0.179274, 0.228927, 1)
+sky_horizon_color = Color(0.145098, 0.180392, 0.227451, 1)
+ground_bottom_color = Color(0.145098, 0.180392, 0.227451, 1)
+ground_horizon_color = Color(0.145098, 0.180392, 0.227451, 1)
+
+[sub_resource type="Sky" id="Sky_qg05s"]
+sky_material = SubResource("ProceduralSkyMaterial_b15bl")
+
+[sub_resource type="Environment" id="Environment_opf70"]
+background_mode = 2
+sky = SubResource("Sky_qg05s")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op884"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m0rsf"]
+
+[node name="root" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_opf70")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.1
+shadow_enabled = true
+sky_mode = 2
+
+[node name="HallwayLowPolyUV" parent="." instance=ExtResource("1_q7sdw")]
+
+[node name="HallwayLowPolyUV2" parent="." instance=ExtResource("1_q7sdw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="HallwayLowPolyUV3" parent="." instance=ExtResource("1_q7sdw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_op884")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_m0rsf")
+
+[node name="CeilingLight_Small2" parent="." instance=ExtResource("2_lrmd0")]
+
+[node name="CeilingLight_Small5" parent="." instance=ExtResource("2_lrmd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="CeilingLight_Small6" parent="." instance=ExtResource("2_lrmd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="CeilingLight_Small3" parent="." instance=ExtResource("2_lrmd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="CeilingLight_Small4" parent="." instance=ExtResource("2_lrmd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)

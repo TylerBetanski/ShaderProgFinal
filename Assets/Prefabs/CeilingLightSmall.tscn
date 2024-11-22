@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvay5j3aig3on"]
+
+[ext_resource type="PackedScene" uid="uid://bi6dsylo6k8e" path="res://Assets/CeilingLights/CeilingLight_Small.glb" id="1_2nh3l"]
+
+[node name="CeilingLight_Small2" instance=ExtResource("1_2nh3l")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.60129, 0)
+light_color = Color(1, 0.971667, 0.9, 1)
+light_energy = 2.0
+spot_angle = 60.0
+spot_angle_attenuation = 2.0
