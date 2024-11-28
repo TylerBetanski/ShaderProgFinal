@@ -1,0 +1,17 @@
+[gd_scene load_steps=7 format=3 uid="uid://buf75vkc1omkq"]
+
+[ext_resource type="PackedScene" uid="uid://dc40louwdyjdh" path="res://Assets/Hallway/HallwayEndcap.glb" id="1_whnh2"]
+[ext_resource type="Material" uid="uid://cu2iw6hub8rus" path="res://Assets/Hallway/Materials/Floor/HospitalFloor.tres" id="2_tm4gq"]
+[ext_resource type="Material" uid="uid://dc7uph6cmxceg" path="res://Assets/Hallway/Materials/Ceiling/HospitalCeiling.tres" id="3_b5p46"]
+[ext_resource type="Material" uid="uid://dgj8f7x25oybo" path="res://Assets/Hallway/Materials/WallLower/WallLower.tres" id="4_msaii"]
+[ext_resource type="Material" uid="uid://l2kqi1626l7t" path="res://Assets/Hallway/Materials/WallCurb/WallCurb.tres" id="5_xcjy8"]
+[ext_resource type="Material" uid="uid://blrqjbdief3u" path="res://Assets/Hallway/Materials/WallUpper/WallUpper.tres" id="6_bkt01"]
+
+[node name="HallwayEndcap" instance=ExtResource("1_whnh2")]
+
+[node name="Hallway2_endcap" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_tm4gq")
+surface_material_override/1 = ExtResource("3_b5p46")
+surface_material_override/2 = ExtResource("4_msaii")
+surface_material_override/3 = ExtResource("5_xcjy8")
+surface_material_override/4 = ExtResource("6_bkt01")

@@ -11,5 +11,16 @@ config_version=5
 [application]
 
 config/name="ShaderProgFinal"
+run/main_scene="res://Scenes/Debug.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Assets/icon.svg"
+
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=400
+window/stretch/mode="viewport"
+
+[rendering]
+
+shading/overrides/force_vertex_shading=true

@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://l2kqi1626l7t"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/RetroShader.gdshader" id="1_5ab01"]
+[ext_resource type="Texture2D" uid="uid://dp5qffn1arvu8" path="res://Assets/Hallway/Materials/WallCurb/HospitalWallCurb_Grunge_basecolor.png" id="2_ad668"]
+[ext_resource type="Texture2D" uid="uid://b5tqcmav0n81s" path="res://Assets/Hallway/Materials/WallCurb/HospitalWallCurb_Grunge_normal.png" id="3_jyshy"]
+[ext_resource type="Texture2D" uid="uid://bum1ih7lcmvue" path="res://Assets/Hallway/Materials/WallCurb/HospitalWallCurb_Grunge_orm.png" id="4_lumsv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5ab01")
+shader_parameter/vertex_jitter_strength = 0.2
+shader_parameter/albedo = ExtResource("2_ad668")
+shader_parameter/orm = ExtResource("4_lumsv")
+shader_parameter/normal = ExtResource("3_jyshy")

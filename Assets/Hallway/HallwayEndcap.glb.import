@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cppsi2y46r56u"
-path="res://.godot/imported/HallwayLowPolyUV.glb-cc08fd720348ae5ac65fc149f9c78f38.scn"
+uid="uid://dc40louwdyjdh"
+path="res://.godot/imported/HallwayEndcap.glb-1e9f307db413f3b2553cd5f4f7e562a0.scn"
 
 [deps]
 
-source_file="res://Assets/Hallway/HallwayLowPolyUV.glb"
-dest_files=["res://.godot/imported/HallwayLowPolyUV.glb-cc08fd720348ae5ac65fc149f9c78f38.scn"]
+source_file="res://Assets/Hallway/HallwayEndcap.glb"
+dest_files=["res://.godot/imported/HallwayEndcap.glb-1e9f307db413f3b2553cd5f4f7e562a0.scn"]
 
 [params]
 

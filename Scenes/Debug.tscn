@@ -1,13 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc2ixaiwf4q57"]
+[gd_scene load_steps=10 format=3 uid="uid://dc2ixaiwf4q57"]
 
-[ext_resource type="PackedScene" uid="uid://rlfcqk4e4i5m" path="res://Assets/Prefabs/HallwayLowPolyUV_Textured.tscn" id="1_q7sdw"]
-[ext_resource type="PackedScene" uid="uid://bvay5j3aig3on" path="res://Assets/Prefabs/CeilingLightSmall.tscn" id="2_lrmd0"]
+[ext_resource type="PackedScene" uid="uid://bvay5j3aig3on" path="res://Prefabs/CeilingLightSmall.tscn" id="2_lrmd0"]
+[ext_resource type="PackedScene" uid="uid://bkcuotajcd6lb" path="res://Prefabs/Hallway.tscn" id="2_ovg38"]
+[ext_resource type="Script" path="res://Scripts/FlickeringLight.gd" id="2_ucuu6"]
+[ext_resource type="PackedScene" uid="uid://buf75vkc1omkq" path="res://Prefabs/HallwayEndcap.tscn" id="3_6q4ha"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b15bl"]
-sky_top_color = Color(0.143568, 0.179274, 0.228927, 1)
-sky_horizon_color = Color(0.145098, 0.180392, 0.227451, 1)
-ground_bottom_color = Color(0.145098, 0.180392, 0.227451, 1)
-ground_horizon_color = Color(0.145098, 0.180392, 0.227451, 1)
+sky_top_color = Color(0.0544832, 0.0744274, 0.10216, 1)
+sky_horizon_color = Color(0.0572092, 0.0772601, 0.103993, 1)
+ground_bottom_color = Color(0.0815362, 0.10587, 0.138312, 1)
+ground_horizon_color = Color(0.0922162, 0.118417, 0.15335, 1)
 
 [sub_resource type="Sky" id="Sky_qg05s"]
 sky_material = SubResource("ProceduralSkyMaterial_b15bl")
@@ -17,6 +19,15 @@ background_mode = 2
 sky = SubResource("Sky_qg05s")
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_curve = 0.267944
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.988653, 0.986447, 0.864516, 1)
+volumetric_fog_emission = Color(0.113665, 0.113665, 0.113665, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op884"]
 
@@ -33,14 +44,6 @@ light_energy = 0.1
 shadow_enabled = true
 sky_mode = 2
 
-[node name="HallwayLowPolyUV" parent="." instance=ExtResource("1_q7sdw")]
-
-[node name="HallwayLowPolyUV2" parent="." instance=ExtResource("1_q7sdw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
-
-[node name="HallwayLowPolyUV3" parent="." instance=ExtResource("1_q7sdw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
@@ -54,8 +57,10 @@ mesh = SubResource("CapsuleMesh_m0rsf")
 
 [node name="CeilingLight_Small2" parent="." instance=ExtResource("2_lrmd0")]
 
-[node name="CeilingLight_Small5" parent="." instance=ExtResource("2_lrmd0")]
+[node name="CeilingLight_Small5" parent="." node_paths=PackedStringArray("light") instance=ExtResource("2_lrmd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("2_ucuu6")
+light = NodePath("SpotLight3D")
 
 [node name="CeilingLight_Small6" parent="." instance=ExtResource("2_lrmd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
@@ -63,5 +68,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 [node name="CeilingLight_Small3" parent="." instance=ExtResource("2_lrmd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
-[node name="CeilingLight_Small4" parent="." instance=ExtResource("2_lrmd0")]
+[node name="SpotLight3D" parent="CeilingLight_Small3" index="1"]
+visible = false
+
+[node name="CeilingLight_Small4" parent="." node_paths=PackedStringArray("light") instance=ExtResource("2_lrmd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+script = ExtResource("2_ucuu6")
+light = NodePath("SpotLight3D")
+
+[node name="Hallway" parent="." instance=ExtResource("2_ovg38")]
+
+[node name="Hallway2" parent="." instance=ExtResource("2_ovg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Hallway3" parent="." instance=ExtResource("2_ovg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="HallwayEndcap" parent="." instance=ExtResource("3_6q4ha")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21, 0, 0)
+
+[node name="HallwayEndcap2" parent="." instance=ExtResource("3_6q4ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18, 1.5, 0)
+keep_aspect = 0
+fov = 60.0
+
+[editable path="CeilingLight_Small5"]
+[editable path="CeilingLight_Small3"]
+[editable path="CeilingLight_Small4"]
