@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg1yeijex0kv1"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_x1e7k"]
+
+[node name="PGRamp" type="MeshInstance3D"]
+mesh = SubResource("PrismMesh_x1e7k")

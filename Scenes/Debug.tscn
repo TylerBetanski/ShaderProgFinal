@@ -1,9 +1,66 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc2ixaiwf4q57"]
+[gd_scene load_steps=28 format=3 uid="uid://dc2ixaiwf4q57"]
 
+[ext_resource type="Script" path="res://Scenes/character_body_3d.gd" id="1_6o1y1"]
 [ext_resource type="PackedScene" uid="uid://bvay5j3aig3on" path="res://Prefabs/CeilingLightSmall.tscn" id="2_lrmd0"]
 [ext_resource type="PackedScene" uid="uid://bkcuotajcd6lb" path="res://Prefabs/Hallway.tscn" id="2_ovg38"]
 [ext_resource type="Script" path="res://Scripts/FlickeringLight.gd" id="2_ucuu6"]
 [ext_resource type="PackedScene" uid="uid://buf75vkc1omkq" path="res://Prefabs/HallwayEndcap.tscn" id="3_6q4ha"]
+[ext_resource type="Texture2D" uid="uid://bp53sdafv645s" path="res://particle_sprite_smoke.webp" id="5_twpu3"]
+[ext_resource type="Script" path="res://Scripts/ProceduralGeneration/PGSpawner.gd" id="6_g5vuk"]
+[ext_resource type="Script" path="res://Scripts/ProceduralGeneration/PGSpawn.gd" id="7_gymk0"]
+[ext_resource type="PackedScene" uid="uid://4hrupv36mcsl" path="res://Prefabs/ProceduralGeneration/PGBox.tscn" id="8_0r40a"]
+[ext_resource type="PackedScene" uid="uid://cg1yeijex0kv1" path="res://Prefabs/ProceduralGeneration/PGRamp.tscn" id="9_uexjj"]
+[ext_resource type="PackedScene" uid="uid://dje8rrbx5x2oe" path="res://Prefabs/ProceduralGeneration/PGSphere.tscn" id="10_xkpur"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op884"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m0rsf"]
+
+[sub_resource type="Gradient" id="Gradient_ystx4"]
+offsets = PackedFloat32Array(0, 0.1, 0.5, 0.9, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v0kx3"]
+gradient = SubResource("Gradient_ystx4")
+
+[sub_resource type="Curve" id="Curve_18t4b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.501859), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gf8a3"]
+curve = SubResource("Curve_18t4b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kctjm"]
+emission_shape_scale = Vector3(26, 4, 4)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -0.2, 0.2)
+scale_curve = SubResource("CurveTexture_gf8a3")
+color_ramp = SubResource("GradientTexture1D_v0kx3")
+anim_offset_max = 1.0
+turbulence_enabled = true
+turbulence_noise_scale = 2.0
+turbulence_noise_speed_random = 0.05
+turbulence_influence_min = 0.05
+turbulence_influence_max = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q70y4"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.28485, 0.28485, 0.28485, 1)
+albedo_texture = ExtResource("5_twpu3")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_wa3qr"]
+lightmap_size_hint = Vector2i(3, 3)
+material = SubResource("StandardMaterial3D_q70y4")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b15bl"]
 sky_top_color = Color(0.0544832, 0.0744274, 0.10216, 1)
@@ -29,23 +86,29 @@ volumetric_fog_density = 0.02
 volumetric_fog_albedo = Color(0.988653, 0.986447, 0.864516, 1)
 volumetric_fog_emission = Color(0.113665, 0.113665, 0.113665, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op884"]
+[sub_resource type="Resource" id="Resource_a1bpr"]
+script = ExtResource("7_gymk0")
+object = ExtResource("8_0r40a")
+weight = 1
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_m0rsf"]
+[sub_resource type="Resource" id="Resource_mdcq5"]
+script = ExtResource("7_gymk0")
+object = ExtResource("9_uexjj")
+weight = 1
+
+[sub_resource type="Resource" id="Resource_eyts2"]
+script = ExtResource("7_gymk0")
+object = ExtResource("10_xkpur")
+weight = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1b6k"]
+size = Vector3(48, 3, 2)
 
 [node name="root" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_opf70")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-light_energy = 0.1
-shadow_enabled = true
-sky_mode = 2
-
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+script = ExtResource("1_6o1y1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -55,46 +118,84 @@ shape = SubResource("CapsuleShape3D_op884")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_m0rsf")
 
-[node name="CeilingLight_Small2" parent="." instance=ExtResource("2_lrmd0")]
-
-[node name="CeilingLight_Small5" parent="." node_paths=PackedStringArray("light") instance=ExtResource("2_lrmd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-script = ExtResource("2_ucuu6")
-light = NodePath("SpotLight3D")
-
-[node name="CeilingLight_Small6" parent="." instance=ExtResource("2_lrmd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-
-[node name="CeilingLight_Small3" parent="." instance=ExtResource("2_lrmd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-
-[node name="SpotLight3D" parent="CeilingLight_Small3" index="1"]
-visible = false
-
-[node name="CeilingLight_Small4" parent="." node_paths=PackedStringArray("light") instance=ExtResource("2_lrmd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
-script = ExtResource("2_ucuu6")
-light = NodePath("SpotLight3D")
-
-[node name="Hallway" parent="." instance=ExtResource("2_ovg38")]
-
-[node name="Hallway2" parent="." instance=ExtResource("2_ovg38")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-
-[node name="Hallway3" parent="." instance=ExtResource("2_ovg38")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-
-[node name="HallwayEndcap" parent="." instance=ExtResource("3_6q4ha")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21, 0, 0)
-
-[node name="HallwayEndcap2" parent="." instance=ExtResource("3_6q4ha")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 0)
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18, 1.5, 0)
 keep_aspect = 0
 fov = 60.0
 
-[editable path="CeilingLight_Small5"]
-[editable path="CeilingLight_Small3"]
-[editable path="CeilingLight_Small4"]
+[node name="DustParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+amount = 200
+lifetime = 5.0
+preprocess = 2.5
+fixed_fps = 20
+visibility_aabb = AABB(-32, -4, -4, 64, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_kctjm")
+draw_pass_1 = SubResource("QuadMesh_wa3qr")
+
+[node name="Hallway" type="Node3D" parent="."]
+
+[node name="Hallway" parent="Hallway" instance=ExtResource("2_ovg38")]
+
+[node name="Hallway2" parent="Hallway" instance=ExtResource("2_ovg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Hallway3" parent="Hallway" instance=ExtResource("2_ovg38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="HallwayEndcap" parent="Hallway" instance=ExtResource("3_6q4ha")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21, 0, 0)
+
+[node name="HallwayEndcap2" parent="Hallway" instance=ExtResource("3_6q4ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 0)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="CeilingLight_Small2" parent="Lights" instance=ExtResource("2_lrmd0")]
+
+[node name="CeilingLight_Small5" parent="Lights" node_paths=PackedStringArray("light") instance=ExtResource("2_lrmd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("2_ucuu6")
+light = NodePath("SpotLight3D")
+
+[node name="CeilingLight_Small6" parent="Lights" instance=ExtResource("2_lrmd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="CeilingLight_Small3" parent="Lights" instance=ExtResource("2_lrmd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="SpotLight3D" parent="Lights/CeilingLight_Small3" index="1"]
+visible = false
+
+[node name="CeilingLight_Small4" parent="Lights" node_paths=PackedStringArray("light") instance=ExtResource("2_lrmd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+script = ExtResource("2_ucuu6")
+light = NodePath("SpotLight3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.1
+shadow_enabled = true
+sky_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lights"]
+environment = SubResource("Environment_opf70")
+
+[node name="PGSpawner" type="Node3D" parent="."]
+script = ExtResource("6_g5vuk")
+bounds = AABB(0, 0, 0, 48, 1, 6)
+min_spawns = 20.0
+max_spawns = 30.0
+objects = Array[ExtResource("7_gymk0")]([SubResource("Resource_a1bpr"), SubResource("Resource_mdcq5"), SubResource("Resource_eyts2")])
+exclusion_mask = 32769
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 32768
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_g1b6k")
+
+[editable path="Lights/CeilingLight_Small5"]
+[editable path="Lights/CeilingLight_Small3"]
+[editable path="Lights/CeilingLight_Small4"]

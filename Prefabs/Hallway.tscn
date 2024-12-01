@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkcuotajcd6lb"]
+[gd_scene load_steps=9 format=3 uid="uid://bkcuotajcd6lb"]
 
 [ext_resource type="PackedScene" uid="uid://bomv6ykm06o2h" path="res://Assets/Hallway/Hallway.glb" id="1_muacj"]
 [ext_resource type="Material" uid="uid://cu2iw6hub8rus" path="res://Assets/Hallway/Materials/Floor/HospitalFloor.tres" id="2_qrg1w"]
@@ -6,6 +6,12 @@
 [ext_resource type="Material" uid="uid://l2kqi1626l7t" path="res://Assets/Hallway/Materials/WallCurb/WallCurb.tres" id="4_i8t7q"]
 [ext_resource type="Material" uid="uid://blrqjbdief3u" path="res://Assets/Hallway/Materials/WallUpper/WallUpper.tres" id="5_yf4c6"]
 [ext_resource type="Material" uid="uid://dc7uph6cmxceg" path="res://Assets/Hallway/Materials/Ceiling/HospitalCeiling.tres" id="6_ctd6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qk5a7"]
+size = Vector3(12, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bgea"]
+size = Vector3(12, 3, 1)
 
 [node name="Hallway" instance=ExtResource("1_muacj")]
 
@@ -15,3 +21,21 @@ surface_material_override/1 = ExtResource("3_exsum")
 surface_material_override/2 = ExtResource("4_i8t7q")
 surface_material_override/3 = ExtResource("5_yf4c6")
 surface_material_override/4 = ExtResource("6_ctd6c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_qk5a7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_qk5a7")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3.5)
+shape = SubResource("BoxShape3D_2bgea")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.5)
+shape = SubResource("BoxShape3D_2bgea")
