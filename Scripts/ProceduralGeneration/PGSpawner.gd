@@ -1,3 +1,4 @@
+@tool
 class_name PGSpawner extends Node3D
 
 @export var bounds : AABB = AABB(Vector3.ZERO, Vector3.ONE)
@@ -7,13 +8,32 @@ class_name PGSpawner extends Node3D
 @export var objects : Array[PGSpawn]
 @export var allow_self_intersection : bool = true
 @export_flags_3d_physics var exclusion_mask : int
+@export var regenerate : bool:
+	set(value):
+		if value == true:
+			_begin_spawn()
+			regenerate = false
+		#notify_property_list_changed()
 
 var _spawned_objects : Array[Node3D]
 var _total_weight : int = 0
 
+func _validate_property(property: Dictionary) -> void:
+	if property.name == "regenerate" and regenerate:
+		print("HELLO!")
+		regenerate = false
+	pass
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
+
+func _begin_spawn():
+	for node in get_children(true):
+		remove_child(node)
+	
 	var i := 0
+	_total_weight = 0
 	while i < objects.size():
 		if objects[i] != null and objects[i].object != null:
 			_total_weight += objects[i].weight
@@ -23,6 +43,7 @@ func _ready() -> void:
 		
 		i = i + 1
 	_spawn()
+	
 
 func _spawn() -> void:
 	for i in range(0, randi_range(min_spawns, max_spawns)):
@@ -44,8 +65,18 @@ func _get_random_object() -> PackedScene:
 	return null
 
 func _spawn_object(object : PackedScene, pos : Vector3) -> void:
-	var spawned = object.instantiate() as MeshInstance3D
+	var spawned = object.instantiate() as Node3D
+	var mesh = spawned as MeshInstance3D
+	if mesh == null:
+		for node in spawned.get_children():
+			if node is MeshInstance3D:
+				mesh = node as MeshInstance3D
+				break
+				
 	add_child(spawned)
+	spawned.reparent(self)
+	spawned.owner = get_tree().edited_scene_root
 	_spawned_objects.append(spawned)
+	
 	spawned.global_position = pos
-	spawned.global_position += Vector3.UP * (floor_offset + spawned.get_aabb().size.y/2.0)
+	spawned.global_rotation_degrees = Vector3(0, randf_range(-360, 360), 0)

@@ -24,3 +24,10 @@ window/stretch/mode="viewport"
 [rendering]
 
 shading/overrides/force_vertex_shading=true
+
+[shader_globals]
+
+VERTEX_JITTER={
+"type": "float",
+"value": 0.1
+}

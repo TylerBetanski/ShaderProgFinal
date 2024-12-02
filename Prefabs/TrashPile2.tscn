@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://3mrrtv51q1ef"]
+
+[ext_resource type="PackedScene" uid="uid://cym0k1e6omrcc" path="res://Assets/Props/TrashPile_2.glb" id="1_bia1f"]
+[ext_resource type="Material" uid="uid://bph6gmtp6eg3l" path="res://Assets/Props/Materials/Trash/Trash.tres" id="2_tvcii"]
+
+[node name="TrashPile2" instance=ExtResource("1_bia1f")]
+
+[node name="TrashPile_2" parent="." index="0"]
+material_override = ExtResource("2_tvcii")

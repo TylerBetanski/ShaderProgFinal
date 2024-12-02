@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bkcuotajcd6lb" path="res://Prefabs/Hallway.tscn" id="2_ovg38"]
 [ext_resource type="Script" path="res://Scripts/FlickeringLight.gd" id="2_ucuu6"]
 [ext_resource type="PackedScene" uid="uid://buf75vkc1omkq" path="res://Prefabs/HallwayEndcap.tscn" id="3_6q4ha"]
+[ext_resource type="PackedScene" uid="uid://r7erbk10682p" path="res://Prefabs/TrashPile.tscn" id="5_jaylt"]
 [ext_resource type="Texture2D" uid="uid://bp53sdafv645s" path="res://particle_sprite_smoke.webp" id="5_twpu3"]
 [ext_resource type="Script" path="res://Scripts/ProceduralGeneration/PGSpawner.gd" id="6_g5vuk"]
+[ext_resource type="PackedScene" uid="uid://certdux0xwou7" path="res://Prefabs/TrashPile3.tscn" id="6_pwahb"]
+[ext_resource type="PackedScene" uid="uid://3mrrtv51q1ef" path="res://Prefabs/TrashPile2.tscn" id="7_4tcvs"]
 [ext_resource type="Script" path="res://Scripts/ProceduralGeneration/PGSpawn.gd" id="7_gymk0"]
-[ext_resource type="PackedScene" uid="uid://4hrupv36mcsl" path="res://Prefabs/ProceduralGeneration/PGBox.tscn" id="8_0r40a"]
-[ext_resource type="PackedScene" uid="uid://cg1yeijex0kv1" path="res://Prefabs/ProceduralGeneration/PGRamp.tscn" id="9_uexjj"]
-[ext_resource type="PackedScene" uid="uid://dje8rrbx5x2oe" path="res://Prefabs/ProceduralGeneration/PGSphere.tscn" id="10_xkpur"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op884"]
 
@@ -88,17 +88,17 @@ volumetric_fog_emission = Color(0.113665, 0.113665, 0.113665, 1)
 
 [sub_resource type="Resource" id="Resource_a1bpr"]
 script = ExtResource("7_gymk0")
-object = ExtResource("8_0r40a")
+object = ExtResource("5_jaylt")
 weight = 1
 
 [sub_resource type="Resource" id="Resource_mdcq5"]
 script = ExtResource("7_gymk0")
-object = ExtResource("9_uexjj")
+object = ExtResource("7_4tcvs")
 weight = 1
 
 [sub_resource type="Resource" id="Resource_eyts2"]
 script = ExtResource("7_gymk0")
-object = ExtResource("10_xkpur")
+object = ExtResource("6_pwahb")
 weight = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1b6k"]
@@ -107,7 +107,7 @@ size = Vector3(48, 3, 2)
 [node name="root" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -18, 0, 0)
 script = ExtResource("1_6o1y1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -118,8 +118,8 @@ shape = SubResource("CapsuleShape3D_op884")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_m0rsf")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18, 1.5, 0)
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, -1.74845e-07, 0, 1, 0, 1.74845e-07, 0, 1, 0, 1.5, 0)
 keep_aspect = 0
 fov = 60.0
 
@@ -189,12 +189,97 @@ max_spawns = 30.0
 objects = Array[ExtResource("7_gymk0")]([SubResource("Resource_a1bpr"), SubResource("Resource_mdcq5"), SubResource("Resource_eyts2")])
 exclusion_mask = 32769
 
+[node name="TrashPile3" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(-0.00190829, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00190829, -21.6747, 0, -2.77705)
+
+[node name="@Node3D@21055" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(0.742931, 0, -0.669368, 0, 1, 0, 0.669368, 0, 0.742931, -2.75192, 0, -1.66646)
+
+[node name="@Node3D@21056" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(0.997778, 0, 0.0666223, 0, 1, 0, -0.0666223, 0, 0.997778, -16.9835, 0, 2.91679)
+
+[node name="TrashPile" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(-0.172292, 0, -0.985046, 0, 1, 0, 0.985046, 0, -0.172292, 8.99694, 0, 1.6305)
+
+[node name="@Node3D@21057" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(0.984395, 0, 0.175972, 0, 1, 0, -0.175972, 0, 0.984395, 12.8501, 0, -1.15946)
+
+[node name="TrashPile2" type="Node3D" parent="PGSpawner" instance=ExtResource("7_4tcvs")]
+transform = Transform3D(-0.978471, 0, -0.206386, 0, 1, 0, 0.206386, 0, -0.978471, -18.0848, 0, 2.08341)
+
+[node name="@Node3D@21058" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(-0.079155, 0, 0.996862, 0, 1, 0, -0.996862, 0, -0.079155, 12.8052, 0, -1.43279)
+
+[node name="@Node3D@21059" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(-0.816749, 0, 0.576993, 0, 1, 0, -0.576993, 0, -0.816749, -13.3671, 0, -1.61548)
+
+[node name="@Node3D@21060" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(0.47259, 0, -0.881282, 0, 1, 0, 0.881282, 0, 0.47259, 17.206, 0, 1.30535)
+
+[node name="@Node3D@21061" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(-0.417642, 0, 0.908612, 0, 1, 0, -0.908612, 0, -0.417642, -21.1225, 0, -1.0115)
+
+[node name="@Node3D@21062" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(0.071672, 0, 0.997428, 0, 1, 0, -0.997428, 0, 0.071672, -10.5237, 0, -1.05708)
+
+[node name="@Node3D@21063" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(-0.192493, 0, 0.981298, 0, 1, 0, -0.981298, 0, -0.192493, 6.49634, 0, -0.291158)
+
+[node name="@Node3D@21064" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(0.216763, 0, -0.976224, 0, 1, 0, 0.976224, 0, 0.216763, 18.797, 0, 2.97479)
+
+[node name="@Node3D@21065" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(0.974299, 0, 0.225259, 0, 1, 0, -0.225259, 0, 0.974299, -6.19452, 0, 1.18389)
+
+[node name="@Node3D@21066" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(-0.999905, 0, 0.0137895, 0, 1, 0, -0.0137895, 0, -0.999905, 5.15219, 0, 2.19339)
+
+[node name="@Node3D@21067" type="Node3D" parent="PGSpawner" instance=ExtResource("7_4tcvs")]
+transform = Transform3D(-0.0689253, 0, -0.997622, 0, 1, 0, 0.997622, 0, -0.0689253, 10.2262, 0, -0.424488)
+
+[node name="@Node3D@21068" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(0.998719, 0, -0.0506021, 0, 1, 0, 0.0506021, 0, 0.998719, 20.4198, 0, 2.47071)
+
+[node name="@Node3D@21069" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(-0.997656, 0, -0.0684264, 0, 1, 0, 0.0684264, 0, -0.997656, -6.95393, 0, 1.52615)
+
+[node name="@Node3D@21070" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(0.647033, 0, 0.762462, 0, 1, 0, -0.762462, 0, 0.647033, 12.7437, 0, -2.53199)
+
+[node name="@Node3D@21071" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(0.665941, 0, 0.746005, 0, 1, 0, -0.746005, 0, 0.665941, -18.8045, 0, 1.81567)
+
+[node name="@Node3D@21072" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(-0.749893, 0, 0.661559, 0, 1, 0, -0.661559, 0, -0.749893, 3.91799, 0, 2.6838)
+
+[node name="@Node3D@21073" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(-0.919048, 0, -0.394145, 0, 1, 0, 0.394145, 0, -0.919048, -8.50191, 0, -1.14784)
+
+[node name="@Node3D@21074" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(0.930752, 0, 0.365651, 0, 1, 0, -0.365651, 0, 0.930752, -20.4332, 0, -2.68989)
+
+[node name="@Node3D@21075" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(-0.631396, 0, 0.77546, 0, 1, 0, -0.77546, 0, -0.631396, -9.99168, 0, 2.94327)
+
+[node name="@Node3D@21076" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
+transform = Transform3D(0.125008, 0, -0.992156, 0, 1, 0, 0.992156, 0, 0.125008, -20.4505, 0, -2.83267)
+
+[node name="@Node3D@21077" type="Node3D" parent="PGSpawner" instance=ExtResource("7_4tcvs")]
+transform = Transform3D(-0.197795, 0, -0.980243, 0, 1, 0, 0.980243, 0, -0.197795, 11.8498, 0, -1.61692)
+
+[node name="@Node3D@21078" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
+transform = Transform3D(-0.244032, 0, 0.969767, 0, 1, 0, -0.969767, 0, -0.244032, -0.59348, 0, 0.793737)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 32768
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_g1b6k")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0562, 1.29787, 0)
+visible = false
 
 [editable path="Lights/CeilingLight_Small5"]
 [editable path="Lights/CeilingLight_Small3"]

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dmrjreemc7xxa"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/RetroShader.gdshader" id="1_ihadf"]
+[ext_resource type="Texture2D" uid="uid://ndw7aovophnb" path="res://Assets/Props/Materials/Metal/Metal_Grunge_basecolor.png" id="2_npkvv"]
+[ext_resource type="Texture2D" uid="uid://wbqwk03qdtgx" path="res://Assets/Props/Materials/Metal/Metal_Grunge_normal.png" id="3_5ngqa"]
+[ext_resource type="Texture2D" uid="uid://d2qinrx6kvb2y" path="res://Assets/Props/Materials/Metal/Metal_Grunge_orm.png" id="4_ahc62"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ihadf")
+shader_parameter/albedo = ExtResource("2_npkvv")
+shader_parameter/orm = ExtResource("4_ahc62")
+shader_parameter/normal = ExtResource("3_5ngqa")
