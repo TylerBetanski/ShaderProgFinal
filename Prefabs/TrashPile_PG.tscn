@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=4 uid="uid://cxhingru4d0sv"]
+
+[ext_resource type="Material" uid="uid://bph6gmtp6eg3l" path="res://Assets/Props/Materials/Trash/Trash.tres" id="1_63vcw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgkhy"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vxvf0"]
+_surfaces = [{
+"aabb": AABB(-0.833235, 0, -0.743905, 1.85265, 0.339203, 1.60203),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("DAADAA0ADAACAAMACAAHAAkACAAGAAcADgAFAA8ADgAEAAUACgABAAsACgAAAAEAEAABAA0AEAALAAEADwALABAADwAFAAsABAALAAUABAAKAAsAAgAJAAMAAgAIAAkABwAQAAkABwAPABAACQANAAMACQAQAA0ABgAPAAcABgAOAA8AAAANAAEAAAAMAA0A"),
+"lods": [0.12008, PackedByteArray("CAAHAAkAAgAIAAkACAAGAAcACQAMAAIABgAPAAcABwAPAAkACQAPAAwABgAOAA8ADgAEAA8ADwAEAAoADwAKAAwAAAAMAAoA"), 0.325178, PackedByteArray("DgAEAAYABgAEAAoABgAKAAwAAAAMAAoABgAMAAIAAgAIAAYA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 17,
+"vertex_data": PackedByteArray("9xsAAAbxAAB8PU9anNEAAMMOAACGBgAACy6LffkmAAB14gAAydwAAGm5yFiNwwAA+dIAABccAAD+oBzeZygAADx/AAAAAAAAinL//7AnAAA8fwAA//8AALpz4Ibl0AAAAAAAALR+AAALLiBzS3wAAP//AAB4hAAAObhes0t8AAAic//US3wAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kdqhu"]
+resource_name = "TrashPile_1_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.833235, 0, -0.743905, 1.85265, 0.339203, 1.60203),
+"attribute_data": PackedByteArray("//9U7Eztqd++i6P+95jd8OjmUYru3H+iuoesm4SQGrr/f9rGfZM/0v//Drqf6N3F8sj//63DUOyFuP9/7bglqfe9icy6h6yb"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("DAADAA0ADAACAAMACAAHAAkACAAGAAcADgAFAA8ADgAEAAUACgABAAsACgAAAAEAEAABAA0AEAALAAEADwALABAADwAFAAsABAALAAUABAAKAAsAAgAJAAMAAgAIAAkABwAQAAkABwAPABAACQANAAMACQAQAA0ABgAPAAcABgAOAA8AAAANAAEAAAAMAA0A"),
+"lods": [0.12008, PackedByteArray("CAAHAAkAAgAIAAkACAAGAAcACQAMAAIABgAPAAcABwAPAAkACQAPAAwABgAOAA8ADgAEAA8ADwAEAAoADwAKAAwAAAAMAAoA"), 0.325178, PackedByteArray("DgAEABEAEQAEAAoAEQAKAAwAAAAMAAoAEQAMAAIAAgAIABEA")],
+"material": SubResource("StandardMaterial3D_mgkhy"),
+"primitive": 3,
+"uv_scale": Vector4(1.79589, 2, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("9xsAAAbx5M58PU9anNEB0MMOAACGBpPXCy6Lffkmqtd14gAAydzU2mm5yFiNw+XY+dIAABccf+z+oBzeZyhj5zx/AAAAAMDsinL//7Anod08fwAA//+M07pz4Ibl0NXTAAAAALR+Oc4LLiBzS3ysz///AAB4hPjiObhes0t8od4ic//US3zS1PnSAAAXHFTfmZqcsNGbR69JrHe696f9uSunL6CTpduhCrT4pe6y0qnVu2exdq/vsEaekqOfnxGozpwAuj6eZbaGrWegCatRozWjrKyUtXSp")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vxvf0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75w25"]
+size = Vector3(1.23888, 0.228638, 1.19786)
+
+[node name="TrashPile" type="StaticBody3D"]
+collision_layer = 32768
+
+[node name="TrashPile" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_63vcw")
+mesh = SubResource("ArrayMesh_kdqhu")
+skeleton = NodePath("")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100548, 0.185486, 0.0589371)
+shape = SubResource("BoxShape3D_75w25")

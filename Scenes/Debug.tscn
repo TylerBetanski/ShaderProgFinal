@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bkcuotajcd6lb" path="res://Prefabs/Hallway.tscn" id="2_ovg38"]
 [ext_resource type="Script" path="res://Scripts/FlickeringLight.gd" id="2_ucuu6"]
 [ext_resource type="PackedScene" uid="uid://buf75vkc1omkq" path="res://Prefabs/HallwayEndcap.tscn" id="3_6q4ha"]
-[ext_resource type="PackedScene" uid="uid://r7erbk10682p" path="res://Prefabs/TrashPile.tscn" id="5_jaylt"]
 [ext_resource type="Texture2D" uid="uid://bp53sdafv645s" path="res://particle_sprite_smoke.webp" id="5_twpu3"]
 [ext_resource type="Script" path="res://Scripts/ProceduralGeneration/PGSpawner.gd" id="6_g5vuk"]
-[ext_resource type="PackedScene" uid="uid://certdux0xwou7" path="res://Prefabs/TrashPile3.tscn" id="6_pwahb"]
-[ext_resource type="PackedScene" uid="uid://3mrrtv51q1ef" path="res://Prefabs/TrashPile2.tscn" id="7_4tcvs"]
 [ext_resource type="Script" path="res://Scripts/ProceduralGeneration/PGSpawn.gd" id="7_gymk0"]
+[ext_resource type="PackedScene" uid="uid://cxhingru4d0sv" path="res://Prefabs/TrashPile_PG.tscn" id="9_44wwj"]
+[ext_resource type="PackedScene" uid="uid://d0tfn7f3xdcsq" path="res://Prefabs/TrashPile2_PG.tscn" id="10_3kctx"]
+[ext_resource type="PackedScene" uid="uid://c0ynhfafiykuw" path="res://Prefabs/TrashPile3_PG.tscn" id="11_2ovrh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op884"]
 
@@ -82,23 +82,22 @@ fog_light_color = Color(0, 0, 0, 1)
 fog_density = 1.0
 fog_depth_curve = 0.267944
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
-volumetric_fog_albedo = Color(0.988653, 0.986447, 0.864516, 1)
-volumetric_fog_emission = Color(0.113665, 0.113665, 0.113665, 1)
+volumetric_fog_albedo = Color(0.989398, 0.987416, 0.872469, 1)
+volumetric_fog_emission = Color(0.0923971, 0.0923971, 0.092397, 1)
 
 [sub_resource type="Resource" id="Resource_a1bpr"]
 script = ExtResource("7_gymk0")
-object = ExtResource("5_jaylt")
+object = ExtResource("9_44wwj")
 weight = 1
 
 [sub_resource type="Resource" id="Resource_mdcq5"]
 script = ExtResource("7_gymk0")
-object = ExtResource("7_4tcvs")
+object = ExtResource("10_3kctx")
 weight = 1
 
 [sub_resource type="Resource" id="Resource_eyts2"]
 script = ExtResource("7_gymk0")
-object = ExtResource("6_pwahb")
+object = ExtResource("11_2ovrh")
 weight = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1b6k"]
@@ -184,91 +183,160 @@ environment = SubResource("Environment_opf70")
 [node name="PGSpawner" type="Node3D" parent="."]
 script = ExtResource("6_g5vuk")
 bounds = AABB(0, 0, 0, 48, 1, 6)
-min_spawns = 20.0
-max_spawns = 30.0
+min_spawns = 40.0
+max_spawns = 60.0
 objects = Array[ExtResource("7_gymk0")]([SubResource("Resource_a1bpr"), SubResource("Resource_mdcq5"), SubResource("Resource_eyts2")])
-exclusion_mask = 32769
+collision_mask = 32768
 
-[node name="TrashPile3" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(-0.00190829, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00190829, -21.6747, 0, -2.77705)
+[node name="TrashPile" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.454294, 0, -0.890852, 0, 1, 0, 0.890852, 0, -0.454294, 12.6223, 0, 2.28767)
 
-[node name="@Node3D@21055" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(0.742931, 0, -0.669368, 0, 1, 0, 0.669368, 0, 0.742931, -2.75192, 0, -1.66646)
+[node name="@StaticBody3D@39022" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(-0.999733, 0, -0.0230898, 0, 1, 0, 0.0230898, 0, -0.999733, -7.25822, 0, 1.92157)
 
-[node name="@Node3D@21056" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(0.997778, 0, 0.0666223, 0, 1, 0, -0.0666223, 0, 0.997778, -16.9835, 0, 2.91679)
+[node name="@StaticBody3D@39029" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.835379, 0, -0.549674, 0, 1, 0, 0.549674, 0, 0.835379, -2.84613, 0, 1.96967)
 
-[node name="TrashPile" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(-0.172292, 0, -0.985046, 0, 1, 0, 0.985046, 0, -0.172292, 8.99694, 0, 1.6305)
+[node name="@StaticBody3D@39032" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.285206, 0, -0.958466, 0, 1, 0, 0.958466, 0, 0.285206, 14.4272, 0, -1.45824)
 
-[node name="@Node3D@21057" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(0.984395, 0, 0.175972, 0, 1, 0, -0.175972, 0, 0.984395, 12.8501, 0, -1.15946)
+[node name="@StaticBody3D@39033" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(0.948015, 0, 0.318226, 0, 1, 0, -0.318226, 0, 0.948015, 0.479496, 0, 2.80581)
 
-[node name="TrashPile2" type="Node3D" parent="PGSpawner" instance=ExtResource("7_4tcvs")]
-transform = Transform3D(-0.978471, 0, -0.206386, 0, 1, 0, 0.206386, 0, -0.978471, -18.0848, 0, 2.08341)
+[node name="@StaticBody3D@39034" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.997077, 0, 0.0764058, 0, 1, 0, -0.0764058, 0, -0.997077, 15.9302, 0, 2.39262)
 
-[node name="@Node3D@21058" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(-0.079155, 0, 0.996862, 0, 1, 0, -0.996862, 0, -0.079155, 12.8052, 0, -1.43279)
+[node name="@StaticBody3D@39035" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(-0.799905, 0, 0.600127, 0, 1, 0, -0.600127, 0, -0.799905, -19.5449, 0, -2.1725)
 
-[node name="@Node3D@21059" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(-0.816749, 0, 0.576993, 0, 1, 0, -0.576993, 0, -0.816749, -13.3671, 0, -1.61548)
+[node name="@StaticBody3D@39036" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.143156, 0, 0.9897, 0, 1, 0, -0.9897, 0, 0.143156, -12.5998, 0, -1.67641)
 
-[node name="@Node3D@21060" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(0.47259, 0, -0.881282, 0, 1, 0, 0.881282, 0, 0.47259, 17.206, 0, 1.30535)
+[node name="@StaticBody3D@39039" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(-0.553621, 0, -0.832769, 0, 1, 0, 0.832769, 0, -0.553621, 2.71065, 0, 2.26809)
 
-[node name="@Node3D@21061" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(-0.417642, 0, 0.908612, 0, 1, 0, -0.908612, 0, -0.417642, -21.1225, 0, -1.0115)
+[node name="@StaticBody3D@39040" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.919249, 0, -0.393676, 0, 1, 0, 0.393676, 0, 0.919249, -5.89521, 0, 2.89171)
 
-[node name="@Node3D@21062" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(0.071672, 0, 0.997428, 0, 1, 0, -0.997428, 0, 0.071672, -10.5237, 0, -1.05708)
+[node name="@StaticBody3D@39042" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.590556, 0, 0.806997, 0, 1, 0, -0.806997, 0, 0.590556, 21.09, 0, -2.72425)
 
-[node name="@Node3D@21063" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(-0.192493, 0, 0.981298, 0, 1, 0, -0.981298, 0, -0.192493, 6.49634, 0, -0.291158)
+[node name="@StaticBody3D@39044" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.997987, 0, 0.0634134, 0, 1, 0, -0.0634134, 0, -0.997987, 3.72879, 0, -2.29203)
 
-[node name="@Node3D@21064" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(0.216763, 0, -0.976224, 0, 1, 0, 0.976224, 0, 0.216763, 18.797, 0, 2.97479)
+[node name="@StaticBody3D@39047" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.4162, 0, 0.909273, 0, 1, 0, -0.909273, 0, 0.4162, -4.44223, 0, 2.02536)
 
-[node name="@Node3D@21065" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(0.974299, 0, 0.225259, 0, 1, 0, -0.225259, 0, 0.974299, -6.19452, 0, 1.18389)
+[node name="@StaticBody3D@39052" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.916569, 0, 0.399877, 0, 1, 0, -0.399877, 0, -0.916569, -19.3134, 0, -2.69262)
 
-[node name="@Node3D@21066" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(-0.999905, 0, 0.0137895, 0, 1, 0, -0.0137895, 0, -0.999905, 5.15219, 0, 2.19339)
+[node name="@StaticBody3D@39054" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(0.809528, 0, 0.587081, 0, 1, 0, -0.587081, 0, 0.809528, -20.4305, 0, 2.88235)
 
-[node name="@Node3D@21067" type="Node3D" parent="PGSpawner" instance=ExtResource("7_4tcvs")]
-transform = Transform3D(-0.0689253, 0, -0.997622, 0, 1, 0, 0.997622, 0, -0.0689253, 10.2262, 0, -0.424488)
+[node name="@StaticBody3D@39058" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.991084, 0, -0.13324, 0, 1, 0, 0.13324, 0, -0.991084, -11.0029, 0, -2.84322)
 
-[node name="@Node3D@21068" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(0.998719, 0, -0.0506021, 0, 1, 0, 0.0506021, 0, 0.998719, 20.4198, 0, 2.47071)
+[node name="@StaticBody3D@39060" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.79861, 0, -0.601849, 0, 1, 0, 0.601849, 0, -0.79861, -7.69059, 0, 2.08568)
 
-[node name="@Node3D@21069" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(-0.997656, 0, -0.0684264, 0, 1, 0, 0.0684264, 0, -0.997656, -6.95393, 0, 1.52615)
+[node name="@StaticBody3D@39062" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.921994, 0, -0.387204, 0, 1, 0, 0.387204, 0, 0.921994, -0.73142, 0, 2.13755)
 
-[node name="@Node3D@21070" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(0.647033, 0, 0.762462, 0, 1, 0, -0.762462, 0, 0.647033, 12.7437, 0, -2.53199)
+[node name="@StaticBody3D@39065" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(-0.962069, 0, -0.272806, 0, 1, 0, 0.272806, 0, -0.962069, -10.6631, 0, -2.22208)
 
-[node name="@Node3D@21071" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(0.665941, 0, 0.746005, 0, 1, 0, -0.746005, 0, 0.665941, -18.8045, 0, 1.81567)
+[node name="@StaticBody3D@39066" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(0.00147153, 0, -0.999999, 0, 1, 0, 0.999999, 0, 0.00147153, 21.7958, 0, 2.93051)
 
-[node name="@Node3D@21072" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(-0.749893, 0, 0.661559, 0, 1, 0, -0.661559, 0, -0.749893, 3.91799, 0, 2.6838)
+[node name="@StaticBody3D@39068" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(-0.822299, 0, -0.569056, 0, 1, 0, 0.569056, 0, -0.822299, -2.92109, 0, 2.0258)
 
-[node name="@Node3D@21073" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(-0.919048, 0, -0.394145, 0, 1, 0, 0.394145, 0, -0.919048, -8.50191, 0, -1.14784)
+[node name="@StaticBody3D@39070" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(-0.782289, 0, 0.622916, 0, 1, 0, -0.622916, 0, -0.782289, -5.63615, 0, -2.95944)
 
-[node name="@Node3D@21074" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(0.930752, 0, 0.365651, 0, 1, 0, -0.365651, 0, 0.930752, -20.4332, 0, -2.68989)
+[node name="@StaticBody3D@39072" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(0.502889, 0, -0.864351, 0, 1, 0, 0.864351, 0, 0.502889, -12.7645, 0, 1.74981)
 
-[node name="@Node3D@21075" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(-0.631396, 0, 0.77546, 0, 1, 0, -0.77546, 0, -0.631396, -9.99168, 0, 2.94327)
+[node name="@StaticBody3D@39073" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.928789, 0, 0.370609, 0, 1, 0, -0.370609, 0, 0.928789, 0.870599, 0, -2.69134)
 
-[node name="@Node3D@21076" type="Node3D" parent="PGSpawner" instance=ExtResource("5_jaylt")]
-transform = Transform3D(0.125008, 0, -0.992156, 0, 1, 0, 0.992156, 0, 0.125008, -20.4505, 0, -2.83267)
+[node name="@StaticBody3D@39074" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.289697, 0, 0.957119, 0, 1, 0, -0.957119, 0, 0.289697, -15.5168, 0, -2.74976)
 
-[node name="@Node3D@21077" type="Node3D" parent="PGSpawner" instance=ExtResource("7_4tcvs")]
-transform = Transform3D(-0.197795, 0, -0.980243, 0, 1, 0, 0.980243, 0, -0.197795, 11.8498, 0, -1.61692)
+[node name="@StaticBody3D@39075" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.353859, 0, -0.935299, 0, 1, 0, 0.935299, 0, 0.353859, -12.0186, 0, -2.36941)
 
-[node name="@Node3D@21078" type="Node3D" parent="PGSpawner" instance=ExtResource("6_pwahb")]
-transform = Transform3D(-0.244032, 0, 0.969767, 0, 1, 0, -0.969767, 0, -0.244032, -0.59348, 0, 0.793737)
+[node name="@StaticBody3D@39080" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.252374, 0, 0.96763, 0, 1, 0, -0.96763, 0, 0.252374, -1.94995, 0, 2.79748)
+
+[node name="@StaticBody3D@39089" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(-0.871363, 0, 0.490638, 0, 1, 0, -0.490638, 0, -0.871363, -5.39026, 0, 2.42108)
+
+[node name="@StaticBody3D@39091" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.602037, 0, -0.798469, 0, 1, 0, 0.798469, 0, 0.602037, 0.810022, 0, 2.69133)
+
+[node name="@StaticBody3D@39092" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.429687, 0, 0.902978, 0, 1, 0, -0.902978, 0, 0.429687, -12.7843, 0, 2.51304)
+
+[node name="@StaticBody3D@39094" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.162005, 0, -0.98679, 0, 1, 0, 0.98679, 0, -0.162005, 18.5741, 0, 2.76243)
+
+[node name="@StaticBody3D@39097" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.20547, 0, 0.978663, 0, 1, 0, -0.978663, 0, 0.20547, 4.00363, 0, -2.795)
+
+[node name="@StaticBody3D@39102" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(-0.469411, 0, 0.88298, 0, 1, 0, -0.88298, 0, -0.469411, 7.62876, 0, -2.95185)
+
+[node name="@StaticBody3D@39108" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.261689, 0, 0.965152, 0, 1, 0, -0.965152, 0, -0.261689, 10.2681, 0, 2.00161)
+
+[node name="@StaticBody3D@39110" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.739933, 0, -0.672681, 0, 1, 0, 0.672681, 0, 0.739933, -11.1729, 0, 2.03545)
+
+[node name="@StaticBody3D@39115" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.645482, 0, -0.763775, 0, 1, 0, 0.763775, 0, 0.645482, -23.1757, 0, -1.92847)
+
+[node name="@StaticBody3D@39117" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(-0.735384, 0, 0.67765, 0, 1, 0, -0.67765, 0, -0.735384, -21.8064, 0, 2.48117)
+
+[node name="@StaticBody3D@39120" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.688663, 0, -0.725082, 0, 1, 0, 0.725082, 0, 0.688663, -17.997, 0, -2.18669)
+
+[node name="@StaticBody3D@39121" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(-0.993299, 0, -0.115575, 0, 1, 0, 0.115575, 0, -0.993299, -1.73145, 0, 1.62223)
+
+[node name="@StaticBody3D@39123" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.936474, 0, 0.350737, 0, 1, 0, -0.350737, 0, 0.936474, 6.18875, 0, 1.81381)
+
+[node name="@StaticBody3D@39124" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(0.558218, 0, 0.829694, 0, 1, 0, -0.829694, 0, 0.558218, 1.37186, 0, -2.967)
+
+[node name="@StaticBody3D@39126" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.380007, 0, -0.924984, 0, 1, 0, 0.924984, 0, 0.380007, -8.36196, 0, 2.921)
+
+[node name="@StaticBody3D@39127" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.923827, 0, -0.38281, 0, 1, 0, 0.38281, 0, 0.923827, -10.5066, 0, 2.92712)
+
+[node name="@StaticBody3D@39128" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(0.477881, 0, 0.878424, 0, 1, 0, -0.878424, 0, 0.477881, -18.9318, 0, 2.45621)
+
+[node name="@StaticBody3D@39129" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+transform = Transform3D(0.862582, 0, -0.505918, 0, 1, 0, 0.505918, 0, 0.862582, -19.2941, 0, 2.42788)
+
+[node name="@StaticBody3D@39130" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(-0.545679, 0, 0.837994, 0, 1, 0, -0.837994, 0, -0.545679, 14.7075, 0, 2.60499)
+
+[node name="@StaticBody3D@39131" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+transform = Transform3D(-0.822393, 0, -0.568919, 0, 1, 0, 0.568919, 0, -0.822393, -7.5201, 0, -1.86175)
+
+[node name="@StaticBody3D@39132" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.807793, 0, -0.589467, 0, 1, 0, 0.589467, 0, -0.807793, 1.85957, 0, 2.86848)
+
+[node name="@StaticBody3D@39134" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(-0.330988, 0, 0.943635, 0, 1, 0, -0.943635, 0, -0.330988, -6.32794, 0, 2.14841)
+
+[node name="@StaticBody3D@39136" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+transform = Transform3D(0.503054, 0, -0.864255, 0, 1, 0, 0.864255, 0, 0.503054, 18.1808, 0, -2.91249)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 32768
