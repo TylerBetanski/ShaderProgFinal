@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://idnpy30uebco"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/RetroShader.gdshader" id="1_5y5p0"]
+[ext_resource type="Texture2D" uid="uid://c3wrxav1q6d3c" path="res://Assets/Props/Materials/Cardboard/Cardboard_basecolor.png" id="2_07yqm"]
+[ext_resource type="Texture2D" uid="uid://q7qihnfu4ie0" path="res://Assets/Props/Materials/Cardboard/Cardboard_normal.png" id="3_nvw8h"]
+[ext_resource type="Texture2D" uid="uid://bv44loeovqbs0" path="res://Assets/Props/Materials/Cardboard/Cardboard_orm.png" id="4_l1oaa"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5y5p0")
+shader_parameter/albedo = ExtResource("2_07yqm")
+shader_parameter/orm = ExtResource("4_l1oaa")
+shader_parameter/normal = ExtResource("3_nvw8h")
