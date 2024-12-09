@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dc2ixaiwf4q57"]
+[gd_scene load_steps=28 format=3 uid="uid://dc2ixaiwf4q57"]
 
 [ext_resource type="Script" path="res://Scenes/character_body_3d.gd" id="1_6o1y1"]
 [ext_resource type="PackedScene" uid="uid://bvay5j3aig3on" path="res://Prefabs/CeilingLightSmall.tscn" id="2_lrmd0"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cxhingru4d0sv" path="res://Prefabs/TrashPile_PG.tscn" id="9_44wwj"]
 [ext_resource type="PackedScene" uid="uid://d0tfn7f3xdcsq" path="res://Prefabs/TrashPile2_PG.tscn" id="10_3kctx"]
 [ext_resource type="PackedScene" uid="uid://c0ynhfafiykuw" path="res://Prefabs/TrashPile3_PG.tscn" id="11_2ovrh"]
-[ext_resource type="Material" uid="uid://idnpy30uebco" path="res://Assets/Props/Materials/Cardboard/Carboard.tres" id="12_qgsb1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_op884"]
 
@@ -104,12 +103,6 @@ weight = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1b6k"]
 size = Vector3(48, 3, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_n6lgs"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pwg1m"]
-size = Vector3(0.75, 0.75, 0.5)
-
 [node name="root" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
@@ -195,181 +188,137 @@ max_spawns = 60.0
 objects = Array[ExtResource("7_gymk0")]([SubResource("Resource_a1bpr"), SubResource("Resource_mdcq5"), SubResource("Resource_eyts2")])
 collision_mask = 32768
 
-[node name="TrashPile" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="TrashPile" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.402659, 0, 0.91535, 0, 1, 0, -0.91535, 0, -0.402659, -11.8895, 0, -2.90261)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20366" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20366" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.314922, 0, 0.949118, 0, 1, 0, -0.949118, 0, -0.314922, 2.07376, 0, 1.5725)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20367" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20367" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.965426, 0, 0.260677, 0, 1, 0, -0.260677, 0, 0.965426, 13.1308, 0, 1.90082)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20368" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20368" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.367408, 0, -0.93006, 0, 1, 0, 0.93006, 0, 0.367408, 7.55847, 0, -2.74327)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20369" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20369" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.133299, 0, -0.991076, 0, 1, 0, 0.991076, 0, -0.133299, 11.8132, 0, 1.73117)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20374" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20374" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.641066, 0, 0.767485, 0, 1, 0, -0.767485, 0, -0.641066, 16.4496, 0, 2.0965)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20375" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20375" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(-0.929096, 0, -0.36984, 0, 1, 0, 0.36984, 0, -0.929096, -0.985448, 0, -2.71542)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20378" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20378" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.729682, 0, -0.683787, 0, 1, 0, 0.683787, 0, -0.729682, 13.764, 0, 2.4761)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20379" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20379" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.0407526, 0, -0.999169, 0, 1, 0, 0.999169, 0, -0.0407526, -20.9305, 0, -1.39669)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20381" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20381" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.985269, 0, 0.171014, 0, 1, 0, -0.171014, 0, 0.985269, 14.481, 0, 1.85225)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20383" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20383" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.437663, 0, -0.899139, 0, 1, 0, 0.899139, 0, -0.437663, -0.0859962, 0, -2.30354)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20385" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20385" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.546514, 0, -0.83745, 0, 1, 0, 0.83745, 0, -0.546514, 11.5284, 0, -1.91482)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20390" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20390" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.990044, 0, 0.14076, 0, 1, 0, -0.14076, 0, -0.990044, 10.6037, 0, 2.6732)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20400" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20400" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.449438, 0, 0.893311, 0, 1, 0, -0.893311, 0, -0.449438, -7.10193, 0, 2.39071)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20402" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20402" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.993146, 0, -0.116877, 0, 1, 0, 0.116877, 0, -0.993146, -7.7675, 0, 2.5746)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20409" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20409" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.0476525, 0, 0.998864, 0, 1, 0, -0.998864, 0, 0.0476525, 8.77245, 0, 2.96666)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20411" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20411" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.0527504, 0, -0.998608, 0, 1, 0, 0.998608, 0, 0.0527504, 1.20672, 0, -2.23618)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20414" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20414" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.669793, 0, 0.742548, 0, 1, 0, -0.742548, 0, 0.669793, -1.71215, 0, -2.5504)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20415" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20415" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(0.982775, 0, 0.184808, 0, 1, 0, -0.184808, 0, 0.982775, -21.5798, 0, -1.42944)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20416" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20416" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.195917, 0, 0.980621, 0, 1, 0, -0.980621, 0, 0.195917, 23.1433, 0, -2.66093)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20419" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20419" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.763661, 0, 0.645618, 0, 1, 0, -0.645618, 0, 0.763661, 13.4306, 0, 2.68873)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20420" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20420" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.427831, 0, 0.903859, 0, 1, 0, -0.903859, 0, -0.427831, 9.80679, 0, 2.53079)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20421" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20421" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.61763, 0, -0.786469, 0, 1, 0, 0.786469, 0, 0.61763, -10.3922, 0, 2.89297)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20422" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20422" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.993212, 0, 0.116317, 0, 1, 0, -0.116317, 0, 0.993212, 9.76948, 0, -1.61264)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20424" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20424" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.920917, 0, 0.389758, 0, 1, 0, -0.389758, 0, 0.920917, -5.28319, 0, 2.10824)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20425" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20425" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.645374, 0, -0.763866, 0, 1, 0, 0.763866, 0, 0.645374, -15.3112, 0, 1.86489)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20426" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20426" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(-0.29027, 0, 0.956945, 0, 1, 0, -0.956945, 0, -0.29027, 7.82538, 0, 1.8606)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20429" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20429" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.0961011, 0, 0.995372, 0, 1, 0, -0.995372, 0, 0.0961011, -22.895, 0, -2.99101)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20430" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20430" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.756947, 0, -0.653476, 0, 1, 0, 0.653476, 0, -0.756947, -9.54158, 0, -2.17268)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20431" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20431" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.62394, 0, -0.781473, 0, 1, 0, 0.781473, 0, 0.62394, 3.53847, 0, -2.1356)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20432" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20432" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.707399, 0, -0.706814, 0, 1, 0, 0.706814, 0, 0.707399, -4.68675, 0, 1.85848)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20434" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20434" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.467949, 0, -0.883755, 0, 1, 0, 0.883755, 0, -0.467949, 17.472, 0, 2.99473)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20436" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20436" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(0.64747, 0, -0.762091, 0, 1, 0, 0.762091, 0, 0.64747, -16.4311, 0, 2.34972)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20441" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20441" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.260776, 0, -0.965399, 0, 1, 0, 0.965399, 0, -0.260776, 14.1948, 0, 2.8728)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20442" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20442" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(0.647585, 0, -0.761993, 0, 1, 0, 0.761993, 0, 0.647585, 9.7293, 0, 2.21385)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20444" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20444" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.0566844, 0, -0.998392, 0, 1, 0, 0.998392, 0, -0.0566844, -17.8752, 0, 2.49833)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20445" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20445" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.723563, 0, -0.690258, 0, 1, 0, 0.690258, 0, -0.723563, -14.8087, 0, 2.79523)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20449" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20449" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.837939, 0, -0.545764, 0, 1, 0, 0.545764, 0, -0.837939, -9.89091, 0, 2.93558)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20455" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20455" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.546314, 0, 0.83758, 0, 1, 0, -0.83758, 0, 0.546314, 13.4077, 0, -2.31588)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20457" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20457" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.679848, 0, 0.733353, 0, 1, 0, -0.733353, 0, 0.679848, 22.952, 0, 2.56416)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20461" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20461" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.359778, 0, 0.933038, 0, 1, 0, -0.933038, 0, -0.359778, 11.6263, 0, -2.22906)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20462" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
+[node name="@StaticBody3D@20462" parent="PGSpawner" instance=ExtResource("11_2ovrh")]
 transform = Transform3D(-0.117602, 0, -0.993061, 0, 1, 0, 0.993061, 0, -0.117602, 12.2475, 0, 1.6139)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20463" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("9_44wwj")]
+[node name="@StaticBody3D@20463" parent="PGSpawner" instance=ExtResource("9_44wwj")]
 transform = Transform3D(-0.0912566, 0, 0.995827, 0, 1, 0, -0.995827, 0, -0.0912566, 14.822, 0, -2.68195)
-collision_layer = 32768
 
-[node name="@StaticBody3D@20465" type="StaticBody3D" parent="PGSpawner" instance=ExtResource("10_3kctx")]
+[node name="@StaticBody3D@20465" parent="PGSpawner" instance=ExtResource("10_3kctx")]
 transform = Transform3D(0.984697, 0, 0.174278, 0, 1, 0, -0.174278, 0, 0.984697, 12.664, 0, 1.98873)
-collision_layer = 32768
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 32768
@@ -381,21 +330,6 @@ shape = SubResource("BoxShape3D_g1b6k")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0562, 1.29787, 0)
 visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.799223, 0, -0.601034, 0, 1, 0, 0.601034, 0, 0.799223, 1.05967, 0.25, 0.736029)
-material_override = ExtResource("12_qgsb1")
-mesh = SubResource("BoxMesh_n6lgs")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.896123, 0, 0.443806, 0, 1, 0, -0.443806, 0, 0.896123, 5.64199, 0.25, -1.20753)
-material_override = ExtResource("12_qgsb1")
-mesh = SubResource("BoxMesh_n6lgs")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.58147, 0, 0.813568, 0, 1, 0, -0.813568, 0, 0.58147, 6.2533, 0.375, -0.974845)
-material_override = ExtResource("12_qgsb1")
-mesh = SubResource("BoxMesh_pwg1m")
 
 [editable path="Lights/CeilingLight_Small5"]
 [editable path="Lights/CeilingLight_Small3"]

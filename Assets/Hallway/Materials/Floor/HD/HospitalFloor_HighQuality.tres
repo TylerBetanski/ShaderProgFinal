@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://cip7a2of1cpro"]
+
+[ext_resource type="Texture2D" uid="uid://clmmjku3w5tgn" path="res://Assets/Hallway/Materials/Floor/HD/HospitalFloor_Grunge_basecolor.png" id="1_1otvu"]
+[ext_resource type="Texture2D" uid="uid://ciqvpg2iqgde2" path="res://Assets/Hallway/Materials/Floor/HD/HospitalFloor_Grunge_normal.png" id="2_dwc3b"]
+[ext_resource type="Texture2D" uid="uid://ctljr0r1gm3vw" path="res://Assets/Hallway/Materials/Floor/HD/HospitalFloor_Grunge_orm.png" id="3_1eql6"]
+
+[resource]
+albedo_texture = ExtResource("1_1otvu")
+orm_texture = ExtResource("3_1eql6")
+normal_enabled = true
+normal_texture = ExtResource("2_dwc3b")

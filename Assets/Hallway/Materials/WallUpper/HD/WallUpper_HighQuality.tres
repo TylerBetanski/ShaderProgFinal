@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://ddm4cutr8ehpu"]
+
+[ext_resource type="Texture2D" uid="uid://dvgw6l0xs1cx0" path="res://Assets/Hallway/Materials/WallUpper/HD/HospitalUpperWall_Grunge_basecolor.png" id="1_34e4t"]
+[ext_resource type="Texture2D" uid="uid://p84n50wo25yl" path="res://Assets/Hallway/Materials/WallUpper/HD/HospitalUpperWall_Grunge_normal.png" id="2_lr1q5"]
+[ext_resource type="Texture2D" uid="uid://dxxxdlncokoor" path="res://Assets/Hallway/Materials/WallUpper/HD/HospitalUpperWall_Grunge_orm.png" id="3_ocbvq"]
+
+[resource]
+albedo_texture = ExtResource("1_34e4t")
+orm_texture = ExtResource("3_ocbvq")
+normal_enabled = true
+normal_texture = ExtResource("2_lr1q5")

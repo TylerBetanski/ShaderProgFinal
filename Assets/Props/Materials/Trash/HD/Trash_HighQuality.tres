@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://dn2uvt6axwtko"]
+
+[ext_resource type="Texture2D" uid="uid://bumt35v4wvwv" path="res://Assets/Props/Materials/Trash/HD/TrashPile_basecolor.png" id="1_w0ply"]
+[ext_resource type="Texture2D" uid="uid://bi60af1sexw0m" path="res://Assets/Props/Materials/Trash/HD/TrashPile_normal.png" id="2_6jkoe"]
+[ext_resource type="Texture2D" uid="uid://ccao834qvx6om" path="res://Assets/Props/Materials/Trash/HD/TrashPile_orm.png" id="3_s55ac"]
+
+[resource]
+albedo_texture = ExtResource("1_w0ply")
+orm_texture = ExtResource("3_s55ac")
+normal_enabled = true
+normal_texture = ExtResource("2_6jkoe")
